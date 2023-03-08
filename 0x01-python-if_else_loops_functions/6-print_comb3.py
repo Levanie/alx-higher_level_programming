@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-str1 = "Holberton"
-str2 = "School"
-str1 = str1 + " " + str2
-print("Welcome to {}!".format(str1))
+for i in range(0, 10):
+    for j in range((i+1), 10):
+        if (i != 8) or (j != 9):
+            print("{}{}, ".format(i, j), end="")
+        else:
+            print("{}{}".format(i, j))
