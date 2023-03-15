@@ -1,16 +1,17 @@
-#include <Python.h>
-#include <object.h>
-#include <listobject.h>
+#!/usr/bin/python3
+def get_ponderated_promedium(scores):
+    list_promediums = list(map(lambda a: a[0] * a[1], scores))
+    return sum(list_promediums)
 
-void print_python_list_info(PyObject *p)
-{
-	long int size = PyList_Size(p);
-	int i;
-	PyListObject *obj = (PyListObject *)p;
 
-	printf("[*] Size of the Python List = %li\n", size);
-	printf("[*] Allocated = %li\n", obj->allocated);
+def get_sum_weight(scores):
+    list_weights = list(map(lambda a: a[1], scores))
+    return sum(list_weights)
 
-	for (i = 0; i < size; i++)
-		printf("Element %i: %s\n", i, Py_TYPE(obj->ob_item[i])->tp_name);
-}
+
+def weight_average(my_list=[]):
+    if len(my_list) == 0:
+        return 0
+    else:
+        average = get_ponderated_promedium(my_list) / get_sum_weight(my_list)
+        return average
